@@ -1,1 +1,1 @@
-# lets leran some stuff
+# lets learn some stuff
