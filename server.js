@@ -39,7 +39,7 @@ app.post('/signin', function (req,res) {
     db.users.find({"fname":req.body.fname,"password":req.body.password}, function (err, doc) {
 
         console.log(doc);
-        console.log(doc["0"].fname);
+        //console.log(doc["0"].fname);
         //console.log(doc.body[1]);
          //res.json(doc);
         if(doc.length == 0)
