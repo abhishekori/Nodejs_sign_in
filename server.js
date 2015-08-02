@@ -13,11 +13,26 @@ app.post('/signup', function (req, res) {
 
 
     console.log(req.body);
-    db.users.insert(req.body, function (err, doc) {
+    db.users.find({"fname":req.body.fname}, function (err, doc) {
+
+        console.log(doc);
+        if(doc.length==0)
+        {
+            db.users.insert(req.body, function (err, doc) {
+
+                console.log(doc);
+                res.json('Profile created');
+            });
+        }else
+        {
+            res.json('Please choose another user name');
+        }
+    })
+    /*db.users.insert(req.body, function (err, doc) {
 
         console.log(doc);
         res.json(doc);
-    });
+    });*/
 });
 
 app.listen(3000);
