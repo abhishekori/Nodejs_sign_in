@@ -28,12 +28,28 @@ app.post('/signup', function (req, res) {
             res.json('Please choose another user name');
         }
     })
-    /*db.users.insert(req.body, function (err, doc) {
+
+
+
+});
+app.post('/signin', function (req,res) {
+
+    console.log(req.body);
+
+    db.users.find({"fname":req.body.fname,"password":req.body.password}, function (err, doc) {
 
         console.log(doc);
-        res.json(doc);
-    });*/
-});
+        console.log(doc["0"].fname);
+        //console.log(doc.body[1]);
+         //res.json(doc);
+        if(doc.length == 0)
+        {
+            res.json("Sorry username and password cound not be found");
+        }else{
+            res.json("Welcome " + doc[0].fname);
+        }
+    });
+})
 
 app.listen(3000);
 console.log("Server running");
